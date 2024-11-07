@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Pessoas</title>
+</head>
+
+<body>
+    <script>
+        class Pessoa {
+            #nome;
+
+            constructor(nome) {
+                this.#nome = nome;
+            }
+            set setNome(nome) {
+                this.#nome = nome;
+            }
+            get getNome() {
+                return this.#nome;
+            }
+            imprimir() {
+                alert("Pessoa: " + this.#nome);
+                console.log("Pessoa: " + this.#nome);
+                document.getElementById("tela").innerHTML += "Pessoa: " + this.#nome + "</br>";
+            }
+        }
+        class Cadastro {
+            constructor(){
+              this.pessoas = [];
+            }
+            cadastrar() {
+                var opcao;
+                do {
+                    var nome = prompt("Informe o nome da pessoa:", "nome");
+                    var pessoa = new Pessoa(nome);
+                    this.pessoas.push(pessoa);
+                    opcao = confirm("Deseja informar outra pessoa?");
+                } while (opcao == true);
+            }
+            imprimir(){
+                this.pessoas.forEach(pessoa => {
+                    pessoa.imprimir();
+                })
+            }
+        }
+        class Main {
+            main() {
+                var cadastro = new Cadastro();
+                cadastro.cadastrar();
+                cadastro.imprimir();
+            }
+        }
+
+        var principal = new Main();
+    </script>
+    <button onclick="principal.main()">Iniciar</button>
+    <div id="tela"></div>
+</body>
+
+</html>
