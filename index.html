@@ -28,20 +28,23 @@
             }
         }
         class Cadastro {
+            #pessoas;
+
             constructor(){
-              this.pessoas = [];
+              this.#pessoas = [];
             }
             cadastrar() {
                 var opcao;
                 do {
                     var nome = prompt("Informe o nome da pessoa:", "nome");
                     var pessoa = new Pessoa(nome);
-                    this.pessoas.push(pessoa);
+                    this.#pessoas.push(pessoa);
+
                     opcao = confirm("Deseja informar outra pessoa?");
                 } while (opcao == true);
             }
             imprimir(){
-                this.pessoas.forEach(pessoa => {
+                this.#pessoas.forEach(pessoa => {
                     pessoa.imprimir();
                 })
             }
